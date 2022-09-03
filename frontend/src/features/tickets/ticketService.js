@@ -23,8 +23,11 @@ const getTickets = async (token) => {
     },
   };
 
+  console.log("sending call to the correct url");
+
   const response = await axios.get(API_URL, config);
 
+  console.log(`this is the response: ${response.data}`);
   return response.data;
 };
 

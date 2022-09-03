@@ -36,6 +36,7 @@ export const getTickets = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
+      console.log("calling the correct function from the slice");
       return await ticketService.getTickets(token);
     } catch (error) {
       const message =

@@ -6,15 +6,18 @@ import TicketItem from "../components/TicketItem";
 import { getTickets, reset } from "../features/tickets/ticketSlice";
 
 function Tickets() {
+  console.log("beginning");
   const { tickets, isLoading, isSuccess } = useSelector(
     (state) => state.tickets
   );
   const dispatch = useDispatch();
 
-  console.log(tickets);
+  console.log(isLoading);
+  console.log(isSuccess);
 
   useEffect(() => {
     return () => {
+      console.log("reset");
       if (isSuccess) {
         dispatch(reset());
       }
@@ -22,12 +25,16 @@ function Tickets() {
   }, [dispatch, isSuccess]);
 
   useEffect(() => {
+    console.log("getTickets");
     dispatch(getTickets());
   }, [dispatch]);
+
+  console.log("before is loading");
 
   if (isLoading) {
     return <Spinner />;
   }
+  console.log("after is loading");
 
   return (
     <>
